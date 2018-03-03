@@ -5,8 +5,22 @@ let people = require('../models/people');
  * GET /api/people route to retrieve all the people.
  */
 function getPeople(req, res) {
-    //Query the DB and if no errors, send all the books
+    //Query the DB and if no errors, send all the People
     let query = people.find({});
+    query.exec((err, people) => {
+        if(err) res.send(err);
+        //If no errors, send them back to the client
+        res.json(people);
+    });
+}
+
+/*
+* GET /api/people/:name
+*/
+function getPerson(req, res) {
+    console.log(req.params.name);
+
+    let query = people.findOne({"name":req.params.name});
     query.exec((err, people) => {
         if(err) res.send(err);
         //If no errors, send them back to the client
@@ -17,7 +31,7 @@ function getPeople(req, res) {
 /*
  * POST /api/people to save a new person.
  */
-function postPeople(req,res) {
+function postPerson(req,res) {
   //new person
   var newPerson = new people(req.body);
 
@@ -31,5 +45,9 @@ function postPeople(req,res) {
   });
 }
 
+/*
+ * PUT /api/people/:people_id
+ */
+
 //export all the functions
-module.exports = { getPeople, postPeople };
+module.exports = { getPeople, getPerson, postPerson };

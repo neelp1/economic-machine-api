@@ -22,7 +22,17 @@ app.get("/", (req, res) => res.json({message: "Welcome to Economics API"}));
 
 app.route("/api/people")
     .get(people.getPeople)
-    .post(people.postPeople);
+    // .get(people.getPerson)
+    .post(people.postPerson);
+
+
+//formats: application/json or application/x-www-form-urlencoded
+app.route("/api/people/:name")
+    .get(people.getPerson);
+    // .put(people.putPerson)
+    // .detele(people.deletePerson)
+
+
 
 // app.get('/api/money', function(req, res) {
 //   res.end();
