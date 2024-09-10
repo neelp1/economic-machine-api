@@ -10,7 +10,7 @@
   "author": "Neel Patel",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "1.17.2",
+    "body-parser": "1.20.3",
     "express": "4.19.2",
     "mongoose": "^5.8.11",
     "pg": "7.0.2",
